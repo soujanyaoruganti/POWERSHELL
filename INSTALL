@@ -1,0 +1,11 @@
+Login-AzureRmAccount
+Install-Module -Name AzureRm -AllowClobber 
+
+Get-InstalledModule -Name AzureRm
+
+Import-Module -Name AzureRm
+
+Get-AzstorageAccount
+
+Uninstall-AzureRm
+
