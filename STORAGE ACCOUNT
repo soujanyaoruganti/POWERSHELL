@@ -1,0 +1,7 @@
+New-AzureRmStorageAccount 
+-ResourceGroupName  RG_Power 
+-Name soudemostorageaccount 
+-SkuName Standard_LRS 
+-Location 'North Europe'
+-Kind StorageV2
+-AccessTier Cool 
