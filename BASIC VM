@@ -1,0 +1,10 @@
+#vairables for common values:
+
+$resourcegroup= "RG_Power"
+$location= 'North Europe'
+
+#create a virtual machine
+
+New-AzVM -ResourceGroupName $resourcegroup -Location $location
+
+New-AzVM -ResourceGroupName RG_Power -Location 'East Us'
