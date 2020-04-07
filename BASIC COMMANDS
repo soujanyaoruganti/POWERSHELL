@@ -1,0 +1,6 @@
+Check version: 
+$PSVersionTable
+
+To connect to azure portal:
+Connect-AzAccount
+
