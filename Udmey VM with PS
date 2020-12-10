@@ -1,0 +1,61 @@
+Step1:
+Connect-azaccount
+Step2:
+Credentials
+$cred = get-credential
+Username:
+Password:
+Those credentials will be stored in $cred
+Step2: 
+$vm = New-AZVMConfig –VMName myVM –VMSize Standard_D1
+These values are stored in $vm
+Check : $vm
+Step3:
+Required OS
+$vm = Set-=AzVMOperatingSystem `
+-VM $vm `
+-Windows `
+-Credential  $cred `
+-ProvisionVMAgent –EnableAutoUpdate 
+Enter and store
+Check: $vm
+Step 4:
+Tell virtual machine where we can pick up os image from
+$vm = Set-AzVMSourceImage `
+-VM $vm `
+-PUblisherName MicrosoftWindowsServer `
+-Offer WindowsServer `
+-Skus 2016-Datacenter `
+-Version latest
+Check $vm
+Step 5:
+Harddisk size
+$vm = Set-AzVMDisk `
+-VM $vm `
+-Name myosDisk `
+-DiskSizeInGB 128 `
+-CreateOption FromImage `
+-Caching ReadWrite
+ Step 6:
+Require network card
+Goto portal 
+Goto virtual networks
+Open MYvnet
+Goto properties
+Copy resource ID (attach this network card to new vm )
+To add network profile
+$vm = Add-AzVMNetworkInterface  –VM $vm Id (paste resource ID)
+Check
+Step7: 
+Call $vm attribute to create vm 
+New-azvm –ResourceGroupName <name> -location <location> -VM $vm
+Step8:
+To check properties attach vm to a variable and call it 
+Get-azvm  | gm (will give all the properties of vm)
+
+$myvm = getazvm
+$myvm.Location
+Will give location
+ 
+
+
